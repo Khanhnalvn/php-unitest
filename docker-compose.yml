@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  php-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    command: ["tail", "-f", "/dev/null"]  # Keep container running

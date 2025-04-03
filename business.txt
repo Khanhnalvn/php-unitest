@@ -1,0 +1,125 @@
+Business Logic của OrderProcessingService
+Tổng quan
+Dịch vụ OrderProcessingService chịu trách nhiệm xử lý đơn hàng (Order) của người dùng. Nó lấy danh sách đơn hàng từ cơ sở dữ liệu, thực hiện các thao tác khác nhau dựa trên loại đơn hàng, và cập nhật lại trạng thái (status) cũng như mức độ ưu tiên (priority) vào database.
+
+Chi Tiết Business Logic
+1. Input đầu vào
+Hệ thống nhận User ID và thực hiện các bước sau:
+
+Lấy danh sách Order từ cơ sở dữ liệu (DatabaseService).
+
+Lặp qua từng Order để xử lý theo loại đơn hàng (type).
+
+Cập nhật status và priority của Order.
+
+Ghi lại trạng thái đơn hàng vào cơ sở dữ liệu.
+
+2. Quy trình xử lý từng loại Order
+🔹 Loại A - Xuất file CSV
+✅ Điều kiện: type = 'A'
+✅ Hành động:
+
+Xuất đơn hàng ra file CSV.
+
+Nếu amount > 150, ghi thêm dòng ghi chú "High value order".
+
+Nếu file ghi thành công → status = exported.
+
+Nếu lỗi khi ghi file → status = export_failed.
+
+✅ Mức độ ưu tiên (priority)
+
+amount > 200 → priority = high
+
+Ngược lại → priority = low
+
+✅ Cập nhật vào database
+
+Nếu cập nhật thành công → giữ nguyên trạng thái.
+
+Nếu cập nhật thất bại → status = db_error.
+
+🔹 Loại B - Gọi API xử lý
+✅ Điều kiện: type = 'B'
+✅ Hành động:
+
+Gọi API bên ngoài (APIClient->callAPI($orderId)).
+
+Nếu API trả về "success":
+
+Nếu apiResponse->data >= 50 và amount < 100 → status = processed
+
+Nếu apiResponse->data < 50 hoặc flag = true → status = pending
+
+Ngược lại → status = error
+
+Nếu API thất bại → status = api_error
+
+Nếu xảy ra lỗi trong API (exception) → status = api_failure
+
+✅ Mức độ ưu tiên (priority)
+
+amount > 200 → priority = high
+
+Ngược lại → priority = low
+
+✅ Cập nhật vào database
+
+Nếu cập nhật thành công → giữ nguyên trạng thái.
+
+Nếu cập nhật thất bại → status = db_error.
+
+🔹 Loại C - Xử lý nội bộ
+✅ Điều kiện: type = 'C'
+✅ Hành động:
+
+Nếu flag = true → status = completed
+
+Nếu flag = false → status = in_progress
+
+✅ Mức độ ưu tiên (priority)
+
+amount > 200 → priority = high
+
+Ngược lại → priority = low
+
+✅ Cập nhật vào database
+
+Nếu cập nhật thành công → giữ nguyên trạng thái.
+
+Nếu cập nhật thất bại → status = db_error.
+
+🔹 Loại Không Xác Định (Unknown Type)
+✅ Điều kiện: Order có type không hợp lệ
+✅ Hành động:
+
+status = unknown_type
+
+priority = low
+
+Cập nhật vào database.
+
+3. Xử lý lỗi & Exception
+Lỗi API (APIException): status = api_failure
+
+Lỗi database (DatabaseException): status = db_error
+
+Lỗi file (CSV): status = export_failed
+
+Lỗi hệ thống chung (Exception): Trả về false
+
+Tóm Tắt Quy Trình
+Order Type	Hành Động	Điều Kiện Chính	Status Kết Quả
+A	Xuất CSV	File ghi thành công	exported
+A	Xuất CSV	Lỗi ghi file	export_failed
+B	Gọi API	apiResponse->data >= 50 && amount < 100	processed
+B	Gọi API	`apiResponse->data < 50	
+B	Gọi API	API lỗi	api_error / api_failure
+C	Xử lý nội bộ	flag = true	completed
+C	Xử lý nội bộ	flag = false	in_progress
+Unknown	Không hợp lệ	Không xác định	unknown_type
+
+Dữ liệu đầu ra:
+- Trường hợp có orders, trả về danh sách orders
+- trường hợp không có order, trả về danh sách rỗng
+- Trường hợp lỗi không xác định, trả về false

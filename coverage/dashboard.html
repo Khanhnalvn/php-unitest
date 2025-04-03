@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=10.1.16" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=10.1.16" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=10.1.16" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/html/App</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="APIException.php.html#13">App\APIException</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="APIResponse.php.html#4">App\APIResponse</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DatabaseException.php.html#13">App\DatabaseException</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderProcessingService.php.html#14">App\OrderProcessingService</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderProcessorFactory.php.html#4">App\OrderProcessorFactory</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#4">App\RealFileSystem</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#14">App\TypeBOrderProcessor</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#14">App\TypeCOrderProcessor</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FileOperationException.php.html#13">App\FileOperationException</a></td><td class="text-right">66%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="TypeBOrderProcessor.php.html#14">App\TypeBOrderProcessor</a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="OrderProcessingService.php.html#14">App\OrderProcessingService</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#14">App\TypeCOrderProcessor</a></td><td class="text-right">90</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="APIException.php.html#16"><abbr title="App\APIException::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="APIException.php.html#21"><abbr title="App\APIException::getStatusCode">getStatusCode</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="APIResponse.php.html#9"><abbr title="App\APIResponse::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DatabaseException.php.html#16"><abbr title="App\DatabaseException::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DatabaseException.php.html#21"><abbr title="App\DatabaseException::getQuery">getQuery</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="FileOperationException.php.html#21"><abbr title="App\FileOperationException::getPath">getPath</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderProcessingService.php.html#24"><abbr title="App\OrderProcessingService::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderProcessingService.php.html#44"><abbr title="App\OrderProcessingService::processOrders">processOrders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderProcessorFactory.php.html#9"><abbr title="App\OrderProcessorFactory::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="OrderProcessorFactory.php.html#24"><abbr title="App\OrderProcessorFactory::createProcessor">createProcessor</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#5"><abbr title="App\RealFileSystem::isDir">isDir</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#9"><abbr title="App\RealFileSystem::mkdir">mkdir</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#13"><abbr title="App\RealFileSystem::isWritable">isWritable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#17"><abbr title="App\RealFileSystem::fopen">fopen</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#21"><abbr title="App\RealFileSystem::fclose">fclose</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#25"><abbr title="App\RealFileSystem::fputcsv">fputcsv</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RealFileSystem.php.html#29"><abbr title="App\RealFileSystem::fflush">fflush</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#21"><abbr title="App\TypeBOrderProcessor::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#39"><abbr title="App\TypeBOrderProcessor::process">process</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#79"><abbr title="App\TypeBOrderProcessor::validateOrder">validateOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#94"><abbr title="App\TypeBOrderProcessor::setPriority">setPriority</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#27"><abbr title="App\TypeCOrderProcessor::process">process</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#44"><abbr title="App\TypeCOrderProcessor::validateOrder">validateOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#58"><abbr title="App\TypeCOrderProcessor::setPriority">setPriority</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="TypeBOrderProcessor.php.html#39"><abbr title="App\TypeBOrderProcessor::process">process</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="OrderProcessingService.php.html#44"><abbr title="App\OrderProcessingService::processOrders">processOrders</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#44"><abbr title="App\TypeCOrderProcessor::validateOrder">validateOrder</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#79"><abbr title="App\TypeBOrderProcessor::validateOrder">validateOrder</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#21"><abbr title="App\TypeBOrderProcessor::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="TypeBOrderProcessor.php.html#94"><abbr title="App\TypeBOrderProcessor::setPriority">setPriority</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#27"><abbr title="App\TypeCOrderProcessor::process">process</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="TypeCOrderProcessor.php.html#58"><abbr title="App\TypeCOrderProcessor::setPriority">setPriority</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 10.1.16</a> using <a href="https://www.php.net/" target="_top">PHP 8.2.28</a> and <a href="https://phpunit.de/">PHPUnit 10.5.36</a> at Fri Apr 4 9:02:58 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=10.1.16" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=10.1.16" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=10.1.16" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([8,0,0,0,0,0,0,1,0,0,0,2], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([24,0,0,0,0,0,0,0,0,0,0,9], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"APIException.php.html#13\">App\\APIException<\/a>"],[0,1,"<a href=\"APIResponse.php.html#4\">App\\APIResponse<\/a>"],[0,2,"<a href=\"DatabaseException.php.html#13\">App\\DatabaseException<\/a>"],[66.66666666666666,2,"<a href=\"FileOperationException.php.html#13\">App\\FileOperationException<\/a>"],[100,1,"<a href=\"Order.php.html#4\">App\\Order<\/a>"],[0,10,"<a href=\"OrderProcessingService.php.html#14\">App\\OrderProcessingService<\/a>"],[0,2,"<a href=\"OrderProcessorFactory.php.html#4\">App\\OrderProcessorFactory<\/a>"],[0,7,"<a href=\"RealFileSystem.php.html#4\">App\\RealFileSystem<\/a>"],[100,23,"<a href=\"TypeAOrderProcessor.php.html#14\">App\\TypeAOrderProcessor<\/a>"],[0,18,"<a href=\"TypeBOrderProcessor.php.html#14\">App\\TypeBOrderProcessor<\/a>"],[0,9,"<a href=\"TypeCOrderProcessor.php.html#14\">App\\TypeCOrderProcessor<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"APIException.php.html#16\">App\\APIException::__construct<\/a>"],[0,1,"<a href=\"APIException.php.html#21\">App\\APIException::getStatusCode<\/a>"],[0,1,"<a href=\"APIResponse.php.html#9\">App\\APIResponse::__construct<\/a>"],[0,1,"<a href=\"DatabaseException.php.html#16\">App\\DatabaseException::__construct<\/a>"],[0,1,"<a href=\"DatabaseException.php.html#21\">App\\DatabaseException::getQuery<\/a>"],[100,1,"<a href=\"FileOperationException.php.html#16\">App\\FileOperationException::__construct<\/a>"],[0,1,"<a href=\"FileOperationException.php.html#21\">App\\FileOperationException::getPath<\/a>"],[100,1,"<a href=\"Order.php.html#18\">App\\Order::__construct<\/a>"],[0,1,"<a href=\"OrderProcessingService.php.html#24\">App\\OrderProcessingService::__construct<\/a>"],[0,9,"<a href=\"OrderProcessingService.php.html#44\">App\\OrderProcessingService::processOrders<\/a>"],[0,1,"<a href=\"OrderProcessorFactory.php.html#9\">App\\OrderProcessorFactory::__construct<\/a>"],[0,1,"<a href=\"OrderProcessorFactory.php.html#24\">App\\OrderProcessorFactory::createProcessor<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#5\">App\\RealFileSystem::isDir<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#9\">App\\RealFileSystem::mkdir<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#13\">App\\RealFileSystem::isWritable<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#17\">App\\RealFileSystem::fopen<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#21\">App\\RealFileSystem::fclose<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#25\">App\\RealFileSystem::fputcsv<\/a>"],[0,1,"<a href=\"RealFileSystem.php.html#29\">App\\RealFileSystem::fflush<\/a>"],[100,2,"<a href=\"TypeAOrderProcessor.php.html#24\">App\\TypeAOrderProcessor::__construct<\/a>"],[100,3,"<a href=\"TypeAOrderProcessor.php.html#44\">App\\TypeAOrderProcessor::process<\/a>"],[100,3,"<a href=\"TypeAOrderProcessor.php.html#65\">App\\TypeAOrderProcessor::validateOrder<\/a>"],[100,2,"<a href=\"TypeAOrderProcessor.php.html#76\">App\\TypeAOrderProcessor::setPriority<\/a>"],[100,4,"<a href=\"TypeAOrderProcessor.php.html#88\">App\\TypeAOrderProcessor::ensureDirectoryExists<\/a>"],[100,1,"<a href=\"TypeAOrderProcessor.php.html#103\">App\\TypeAOrderProcessor::generateFilename<\/a>"],[100,8,"<a href=\"TypeAOrderProcessor.php.html#113\">App\\TypeAOrderProcessor::writeOrderToCsv<\/a>"],[0,2,"<a href=\"TypeBOrderProcessor.php.html#21\">App\\TypeBOrderProcessor::__construct<\/a>"],[0,10,"<a href=\"TypeBOrderProcessor.php.html#39\">App\\TypeBOrderProcessor::process<\/a>"],[0,4,"<a href=\"TypeBOrderProcessor.php.html#79\">App\\TypeBOrderProcessor::validateOrder<\/a>"],[0,2,"<a href=\"TypeBOrderProcessor.php.html#94\">App\\TypeBOrderProcessor::setPriority<\/a>"],[0,2,"<a href=\"TypeCOrderProcessor.php.html#27\">App\\TypeCOrderProcessor::process<\/a>"],[0,5,"<a href=\"TypeCOrderProcessor.php.html#44\">App\\TypeCOrderProcessor::validateOrder<\/a>"],[0,2,"<a href=\"TypeCOrderProcessor.php.html#58\">App\\TypeCOrderProcessor::setPriority<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

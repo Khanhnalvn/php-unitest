@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1743757378">
+  <project timestamp="1743757378">
+    <file name="/var/www/html/App/APIClient.php">
+      <metrics loc="8" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/APIException.php">
+      <class name="App\APIException" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </class>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="21" type="method" name="getStatusCode" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <metrics loc="25" ncloc="16" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/APIResponse.php">
+      <class name="App\APIResponse" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+      </class>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="11" type="stmt" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <metrics loc="15" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/DatabaseException.php">
+      <class name="App\DatabaseException" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+      </class>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="21" type="method" name="getQuery" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <metrics loc="25" ncloc="16" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/DatabaseService.php">
+      <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/FileOperationException.php">
+      <class name="App\FileOperationException" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
+      </class>
+      <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="17" type="stmt" count="6"/>
+      <line num="18" type="stmt" count="6"/>
+      <line num="21" type="method" name="getPath" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <metrics loc="24" ncloc="15" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="5" coveredelements="3"/>
+    </file>
+    <file name="/var/www/html/App/FileSystem.php">
+      <metrics loc="65" ncloc="18" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/Order.php">
+      <class name="App\Order" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </class>
+      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
+      <line num="20" type="stmt" count="12"/>
+      <line num="21" type="stmt" count="12"/>
+      <line num="22" type="stmt" count="12"/>
+      <line num="23" type="stmt" count="12"/>
+      <metrics loc="26" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+    </file>
+    <file name="/var/www/html/App/OrderProcessingService.php">
+      <class name="App\OrderProcessingService" namespace="global">
+        <metrics complexity="10" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="24" coveredelements="0"/>
+      </class>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="44" type="method" name="processOrders" visibility="public" complexity="9" crap="90" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="50" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <line num="65" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="67" type="stmt" count="0"/>
+      <line num="68" type="stmt" count="0"/>
+      <line num="69" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
+      <line num="74" type="stmt" count="0"/>
+      <line num="75" type="stmt" count="0"/>
+      <metrics loc="79" ncloc="51" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="0" elements="24" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/OrderProcessor.php">
+      <metrics loc="28" ncloc="6" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/OrderProcessorFactory.php">
+      <class name="App\OrderProcessorFactory" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="11" coveredelements="0"/>
+      </class>
+      <line num="9" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="10" type="stmt" count="0"/>
+      <line num="11" type="stmt" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <line num="24" type="method" name="createProcessor" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <metrics loc="32" ncloc="23" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="11" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/OrderProcessorFactoryInterface.php">
+      <metrics loc="22" ncloc="6" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/RealFileSystem.php">
+      <class name="App\RealFileSystem" namespace="global">
+        <metrics complexity="7" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="14" coveredelements="0"/>
+      </class>
+      <line num="5" type="method" name="isDir" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="6" type="stmt" count="0"/>
+      <line num="9" type="method" name="mkdir" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="10" type="stmt" count="0"/>
+      <line num="13" type="method" name="isWritable" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <line num="17" type="method" name="fopen" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="21" type="method" name="fclose" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="25" type="method" name="fputcsv" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="29" type="method" name="fflush" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <metrics loc="32" ncloc="32" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="14" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/TypeAOrderProcessor.php">
+      <class name="App\TypeAOrderProcessor" namespace="global">
+        <metrics complexity="23" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="48" elements="55" coveredelements="55"/>
+      </class>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="12"/>
+      <line num="25" type="stmt" count="12"/>
+      <line num="26" type="stmt" count="12"/>
+      <line num="44" type="method" name="process" visibility="public" complexity="3" crap="3" count="12"/>
+      <line num="45" type="stmt" count="12"/>
+      <line num="46" type="stmt" count="11"/>
+      <line num="49" type="stmt" count="11"/>
+      <line num="50" type="stmt" count="9"/>
+      <line num="51" type="stmt" count="9"/>
+      <line num="52" type="stmt" count="5"/>
+      <line num="53" type="stmt" count="5"/>
+      <line num="54" type="stmt" count="5"/>
+      <line num="55" type="stmt" count="6"/>
+      <line num="56" type="stmt" count="6"/>
+      <line num="57" type="stmt" count="6"/>
+      <line num="65" type="method" name="validateOrder" visibility="private" complexity="3" crap="3" count="12"/>
+      <line num="66" type="stmt" count="12"/>
+      <line num="67" type="stmt" count="1"/>
+      <line num="76" type="method" name="setPriority" visibility="private" complexity="2" crap="2" count="11"/>
+      <line num="77" type="stmt" count="11"/>
+      <line num="78" type="stmt" count="1"/>
+      <line num="80" type="stmt" count="10"/>
+      <line num="88" type="method" name="ensureDirectoryExists" visibility="private" complexity="4" crap="4" count="11"/>
+      <line num="89" type="stmt" count="11"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="94" type="stmt" count="10"/>
+      <line num="95" type="stmt" count="1"/>
+      <line num="103" type="method" name="generateFilename" visibility="private" complexity="1" crap="1" count="9"/>
+      <line num="104" type="stmt" count="9"/>
+      <line num="105" type="stmt" count="9"/>
+      <line num="106" type="stmt" count="9"/>
+      <line num="113" type="method" name="writeOrderToCsv" visibility="private" complexity="8" crap="8" count="9"/>
+      <line num="114" type="stmt" count="9"/>
+      <line num="115" type="stmt" count="9"/>
+      <line num="116" type="stmt" count="1"/>
+      <line num="120" type="stmt" count="8"/>
+      <line num="121" type="stmt" count="1"/>
+      <line num="124" type="stmt" count="7"/>
+      <line num="125" type="stmt" count="7"/>
+      <line num="126" type="stmt" count="1"/>
+      <line num="129" type="stmt" count="7"/>
+      <line num="130" type="stmt" count="7"/>
+      <line num="131" type="stmt" count="7"/>
+      <line num="132" type="stmt" count="7"/>
+      <line num="133" type="stmt" count="7"/>
+      <line num="134" type="stmt" count="7"/>
+      <line num="135" type="stmt" count="7"/>
+      <line num="136" type="stmt" count="7"/>
+      <line num="137" type="stmt" count="7"/>
+      <line num="139" type="stmt" count="7"/>
+      <line num="140" type="stmt" count="1"/>
+      <line num="143" type="stmt" count="6"/>
+      <line num="144" type="stmt" count="1"/>
+      <line num="147" type="stmt" count="8"/>
+      <metrics loc="150" ncloc="99" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="48" coveredstatements="48" elements="55" coveredelements="55"/>
+    </file>
+    <file name="/var/www/html/App/TypeBOrderProcessor.php">
+      <class name="App\TypeBOrderProcessor" namespace="global">
+        <metrics complexity="18" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="33" coveredelements="0"/>
+      </class>
+      <line num="21" type="method" name="__construct" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="39" type="method" name="process" visibility="public" complexity="10" crap="110" count="0"/>
+      <line num="40" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="55" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
+      <line num="57" type="stmt" count="0"/>
+      <line num="58" type="stmt" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="0"/>
+      <line num="63" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="68" type="stmt" count="0"/>
+      <line num="69" type="stmt" count="0"/>
+      <line num="70" type="stmt" count="0"/>
+      <line num="79" type="method" name="validateOrder" visibility="private" complexity="4" crap="20" count="0"/>
+      <line num="80" type="stmt" count="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <line num="83" type="stmt" count="0"/>
+      <line num="84" type="stmt" count="0"/>
+      <line num="94" type="method" name="setPriority" visibility="private" complexity="2" crap="6" count="0"/>
+      <line num="95" type="stmt" count="0"/>
+      <line num="96" type="stmt" count="0"/>
+      <line num="98" type="stmt" count="0"/>
+      <metrics loc="101" ncloc="61" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="33" coveredelements="0"/>
+    </file>
+    <file name="/var/www/html/App/TypeCOrderProcessor.php">
+      <class name="App\TypeCOrderProcessor" namespace="global">
+        <metrics complexity="9" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="17" coveredelements="0"/>
+      </class>
+      <line num="27" type="method" name="process" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="33" type="stmt" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="44" type="method" name="validateOrder" visibility="private" complexity="5" crap="30" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="58" type="method" name="setPriority" visibility="private" complexity="2" crap="6" count="0"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="62" type="stmt" count="0"/>
+      <metrics loc="66" ncloc="36" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="17" coveredelements="0"/>
+    </file>
+    <metrics files="16" loc="707" ncloc="437" classes="11" methods="33" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="144" coveredstatements="54" elements="177" coveredelements="63"/>
+  </project>
+</coverage>

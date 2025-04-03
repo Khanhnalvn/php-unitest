@@ -1,0 +1,322 @@
+<?php
+
+namespace Tests;
+
+use App\{
+    Order,
+    OrderProcessingService,
+    OrderProcessorFactory,
+    DatabaseService,
+    APIClient,
+    APIResponse,
+    FileOperationException,
+    DatabaseException,
+    APIException
+};
+
+test('processes type A orders with file operation success', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'A', 100, false);
+    $tempDir = sys_get_temp_dir();
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'exported', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient, $tempDir);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('exported');
+    expect($result[0]->priority)->toBe('low');
+});
+
+test('processes type A orders with file operation failure', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'A', 100, false);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'export_failed', 'low');
+    
+    // Use non-writable directory to force failure
+    $factory = new OrderProcessorFactory($apiClient, '/non/existent/dir');
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('export_failed');
+});
+
+test('processes type B orders with API success', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    $apiResponse = new APIResponse('success', 60);
+    
+    $order = new Order(1, 'B', 80, false);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $apiClient->shouldReceive('callAPI')
+        ->once()
+        ->with(1)
+        ->andReturn($apiResponse);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'processed', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('processed');
+});
+
+test('processes type C orders correctly', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'C', 250, true);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'completed', 'high');
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('completed');
+    expect($result[0]->priority)->toBe('high');
+});
+
+test('handles unknown order types', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'X', 100, false);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'unknown_type', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('unknown_type');
+});
+
+test('handles database errors during save', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'A', 100, false);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'exported', 'low')
+        ->andThrow(new DatabaseException('Database connection failed'));
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    $result = $service->processOrders(1);
+    
+    expect($result[0]->status)->toBe('db_error');
+});
+
+test('handles API failure in type B orders', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'B', 80, false);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $apiClient->shouldReceive('callAPI')
+        ->once()
+        ->with(1)
+        ->andThrow(new APIException('API call failed'));
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'api_failure', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    $result = $service->processOrders(1);
+    
+    expect($result[0]->status)->toBe('api_failure');
+});
+
+test('handles API error response in type B orders', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    $apiResponse = new APIResponse('error', 0);
+    
+    $order = new Order(1, 'B', 80, false);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $apiClient->shouldReceive('callAPI')
+        ->once()
+        ->with(1)
+        ->andReturn($apiResponse);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'api_error', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    $result = $service->processOrders(1);
+    
+    expect($result[0]->status)->toBe('api_error');
+});
+
+test('handles general exceptions during order processing', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andThrow(new \Exception('Unexpected error'));
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    $result = $service->processOrders(1);
+    
+    expect($result)->toBeFalse();
+});
+
+test('processes type A orders with high value note', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'A', 160, false); // Amount > 150 to trigger high value note
+    $tempDir = sys_get_temp_dir();
+    
+    // Clean up any existing test files
+    array_map('unlink', glob($tempDir . '/orders_type_A_1_*.csv'));
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'exported', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient, $tempDir);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('exported');
+    
+    // Verify the CSV file contains the high value note
+    $files = glob($tempDir . '/orders_type_A_1_*.csv');
+    expect($files)->toHaveCount(1);
+    $content = file_get_contents($files[0]);
+    expect($content)->toContain('High value order');
+    
+    // Clean up after test
+    array_map('unlink', $files);
+});
+
+test('processes type B orders with high amount and flag conditions', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    $apiResponse = new APIResponse('success', 40);
+    
+    $order = new Order(1, 'B', 120, true); // High amount and flag=true
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $apiClient->shouldReceive('callAPI')
+        ->once()
+        ->with(1)
+        ->andReturn($apiResponse);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'pending', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('pending');
+});
+
+test('handles file write failure in type A orders', function () {
+    $dbService = \Mockery::mock(DatabaseService::class);
+    $apiClient = \Mockery::mock(APIClient::class);
+    
+    $order = new Order(1, 'A', 160, false);
+    // Use a non-existent subdirectory in temp dir to ensure write failure
+    $tempDir = sys_get_temp_dir() . '/nonexistent_' . uniqid();
+    
+    $dbService->shouldReceive('getOrdersByUser')
+        ->once()
+        ->with(1)
+        ->andReturn([$order]);
+        
+    $dbService->shouldReceive('updateOrderStatus')
+        ->once()
+        ->with($order->id, 'export_failed', 'low');
+    
+    $factory = new OrderProcessorFactory($apiClient, $tempDir);
+    $service = new OrderProcessingService($dbService, $factory);
+    
+    $result = $service->processOrders(1);
+    expect($result[0]->status)->toBe('export_failed');
+});
+
+afterEach(function () {
+    if ($container = \Mockery::getContainer()) {
+        $container->mockery_close();
+    }
+});
